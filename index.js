@@ -1,13 +1,12 @@
 const express = require("express");
 const app = express();
-const DotEnv = require("dotenv");
-DotEnv.config();
+const models = require("./models");
 
 app.get("/", (req, res) => {
   res.json(process.env);
+  res.end;
 });
 
-app.listen(process.env.PORT || 8080, () => {
-  console.log("Start on 8080");
+models.sequelize.sync().then(() => {
+  app.listen(process.env.PORT || 8080);
 });
-
