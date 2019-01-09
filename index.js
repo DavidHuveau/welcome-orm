@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 const models = require("./models");
 
-app.post("/", (req, res) => {
+app.get("/", (req, res) => {
   res.json(process.env);
 });
 
