@@ -2,6 +2,10 @@ const express = require("express");
 const app = express();
 const models = require("./models");
 
+app.post("/", (req, res) => {
+  res.json(process.env);
+});
+
 app.post("/users", (req, res) => {
   const newUser = new models.users({
     name: "toto",
