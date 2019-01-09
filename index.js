@@ -33,6 +33,20 @@ app.get("/users", (req, res) => {
     });
 });
 
+app.get("/usersall", (req, res) => {
+  models.users
+    .findAll({
+      include: [
+        {
+          model: models.orders
+        }
+      ]
+    })
+    .then(data => {
+      res.json(data);
+    });
+});
+
 app.post("/orders", (req, res) => {
   const newOrder = new models.orders({
     ref: "1234",
